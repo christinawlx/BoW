@@ -1,4 +1,6 @@
-﻿Shader "Custom/MinusColor"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/MinusColor"
 {
 	Properties
 	{
@@ -45,7 +47,7 @@
 	{
 		Fragment o;
 
-		o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.vertex = UnityObjectToClipPos(v.vertex);
 #ifdef PIXELSNAP_ON
 		o.vertex = UnityPixelSnap(o.vertex);
 #endif

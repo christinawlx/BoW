@@ -1,4 +1,6 @@
-﻿Shader "UI/Flowlight"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "UI/Flowlight"
 {
 	Properties
 	{
@@ -90,7 +92,7 @@
 	v2f vert(appdata_t IN)
 	{
 		v2f OUT;
-		OUT.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
+		OUT.vertex = UnityObjectToClipPos(IN.vertex);
 		OUT.texcoord = IN.texcoord;
 
 		/* Flowlight */

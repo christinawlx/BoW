@@ -36,6 +36,7 @@ public class UIHide : MonoBehaviour {
 
     private void EnableControl()
     {
+        Debug.Log("recontrol");
         PlayerController.ban_all_actions = false;
     }
 }

@@ -57,6 +57,7 @@ public class GameFlowControl : MonoBehaviour
     void PlayerPosManage()
     {
         //防止刚进入就返回
+        Debug.Log(SceneChange.pub_reID);
         if (startPos[SceneChange.pub_reID].GetComponent<SceneChange>() != null)
         {
             startPos[SceneChange.pub_reID].GetComponent<SceneChange>().once = true;
@@ -101,14 +102,17 @@ public class GameFlowControl : MonoBehaviour
     //根据存档销毁注册物体
     void DestroySavedObj()
     {
-        for(int i=0;i< SavedObjContainer.childCount; i++)
+        if (obj_destroy.Length != 0)
         {
-            Transform temp = SavedObjContainer.GetChild(i);
-            if (temp.GetComponent<SavedObject>() != null)
+            for (int i = 0; i < SavedObjContainer.childCount; i++)
             {
-                if (obj_destroy[temp.GetComponent<SavedObject>().id])
+                Transform temp = SavedObjContainer.GetChild(i);
+                if (temp.GetComponent<SavedObject>() != null)
                 {
-                    temp.gameObject.SetActive(false);
+                    if (obj_destroy[temp.GetComponent<SavedObject>().id])
+                    {
+                        temp.gameObject.SetActive(false);
+                    }
                 }
             }
         }

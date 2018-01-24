@@ -16,6 +16,8 @@ public class ConditionTrigger : MonoBehaviour
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
